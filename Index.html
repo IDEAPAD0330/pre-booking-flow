@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pre-Booking Flow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .content {
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #prevBtn { background-color: #e74c3c; color: white; }
+        #nextBtn { background-color: #2ecc71; color: white; }
+        #backBtn { background-color: #3498db; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="content" id="pageContent">
+    <h2>Pre-Booking Flow</h2>
+</div>
+
+<div class="buttons">
+    <button id="prevBtn" onclick="prevPage()">Prev</button>
+    <button id="backBtn" onclick="goToFirst()">Back to 1</button>
+    <button id="nextBtn" onclick="nextPage()">Next</button>
+</div>
+
+<script>
+    const pages = [
+        `<h2>Pre-Booking Flow</h2>`,
+
+        `<h2>1. Inform the AAB Fee</h2>
+        <p>Before we proceed, I must indicate that there will be an airline travel advisor fee for this transaction over the phone. Insurance cannot be purchased during this call; it must be purchased by booking online or separately through our preferred supplier. Are you okay with that?</p>`,
+
+        `<h2>2. Rate and Availability Notice</h2>
+        <p>Please be advised that all rates and availability are not guaranteed unless the reservation is ticketed.</p>`,
+
+        `<h2>3. Baggage and Seat Information</h2>
+        <p>Before we proceed, I just want to let you know that:</p>
+        <ul style="text-align:left; display:inline-block;">
+            <li>Baggage fees are not included in the cost of the ticket and will be collected by the airline at the time of check-in.</li>
+            <li>Please double-check with the airline website prior to travel to confirm the proper check-in location.</li>
+            <li>You can assign your seat at the airline's website after we confirm your booking.</li>
+            <li>Pre-reserved seats may incur an additional fee and must be paid directly on the airline's website.</li>
+            <li>Travel restrictions and understanding of each country's policies are your own responsibility.</li>
+        </ul>`,
+
+        `<h2>4. Payment Policy</h2>
+        <p>Before finalizing your payment, we'd like to make you aware of our policy. Once your ticket is confirmed and issued, we kindly ask that you wait at least 48 hours before making any changes. This policy is in place to ensure a seamless travel experience.</p>
+        <p>If you find a need for changes within that time frame, we recommend exploring the option of canceling your booking and rebooking to provide you with greater flexibility.</p>`,
+
+        `<h2>5. Confirmation and Closing</h2>
+        <p>We have successfully processed your reservation. You will be receiving a confirmation email, usually sent in real-time. If there's a delay, it will be within 24 hours.</p>
+        <p>The booking ID is included in that email. Would you like to write it down?</p>
+        <p>Before I let you go, is there anything else I can help you with?</p>
+        <p>Survey spiel</p>
+        <p>Close call</p>`
+    ];
+
+    let currentPage = 0;
+
+    function renderPage() {
+        document.getElementById("pageContent").innerHTML = pages[currentPage];
+    }
+
+    function nextPage() {
+        if (currentPage < pages.length - 1) {
+            currentPage++;
+            renderPage();
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 0) {
+            currentPage--;
+            renderPage();
+        }
+    }
+
+    function goToFirst() {
+        currentPage = 0;
+        renderPage();
+    }
+
+    renderPage();
+</script>
+
+</body>
+</html>
