@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Booking Flow</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       font-family: Arial, sans-serif;
@@ -30,7 +28,7 @@
       text-align: left;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       text-align: center;
       color: #1f3a5f;
       margin-top: 0;
@@ -47,13 +45,9 @@
       padding-left: 25px;
     }
 
-    li {
-      margin-bottom: 10px;
-    }
+    li { margin-bottom: 10px; }
 
-    .selection-screen {
-      text-align: center;
-    }
+    .selection-screen { text-align: center; }
 
     .selection-buttons {
       display: grid;
@@ -80,16 +74,20 @@
       opacity: 0.95;
     }
 
-    .hotel-btn {
-      background: #8e44ad;
-    }
+    .hotel-btn { background: #8e44ad; }
+    .car-btn { background: #f39c12; }
+    .flight-btn { background: #3498db; }
 
-    .car-btn {
-      background: #f39c12;
-    }
-
-    .flight-btn {
-      background: #3498db;
+    .submission-note {
+      background: #fff7d6;
+      border-left: 5px solid #f1c40f;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 15px 0 20px 0;
+      font-size: 17px;
+      font-weight: bold;
+      color: #4a3b00;
+      text-align: center;
     }
 
     .disclosure-box {
@@ -100,9 +98,7 @@
       margin-top: 20px;
     }
 
-    .disclosure-box p {
-      margin: 12px 0;
-    }
+    .disclosure-box p { margin: 12px 0; }
 
     .progress {
       max-width: 900px;
@@ -143,17 +139,9 @@
       cursor: not-allowed;
     }
 
-    #prevBtn {
-      background-color: #e74c3c;
-    }
-
-    #nextBtn {
-      background-color: #2ecc71;
-    }
-
-    #backBtn, #homeBtn {
-      background-color: #3498db;
-    }
+    #prevBtn { background-color: #e74c3c; }
+    #nextBtn { background-color: #2ecc71; }
+    #backBtn, #homeBtn { background-color: #3498db; }
 
     .small-note {
       font-size: 14px;
@@ -163,26 +151,11 @@
     }
 
     @media (max-width: 700px) {
-      body {
-        padding: 20px 10px;
-      }
-
-      .content {
-        padding: 25px 20px;
-      }
-
-      p, ul {
-        font-size: 16px;
-      }
-
-      .selection-buttons {
-        grid-template-columns: 1fr;
-      }
-
-      button {
-        width: 100%;
-      }
-
+      body { padding: 20px 10px; }
+      .content { padding: 25px 20px; }
+      p, ul { font-size: 16px; }
+      .selection-buttons { grid-template-columns: 1fr; }
+      button { width: 100%; }
       .buttons {
         flex-direction: column;
         max-width: 900px;
@@ -220,24 +193,26 @@
     `;
 
     const hotelPage = `
-      <h2>Mandatory Disclosures</h2>
+      <h2>Mandatory Disclosure</h2>
+      <div class="submission-note">For submission: Read the disclosure.</div>
       <div class="disclosure-box">
-        <p>"The lead guest should be present and provide a government-issued photo ID upon check-in."</p>
-        <p>"Please be advised that all special requests are subject to availability and are not guaranteed until check-in."</p>
-        <p>"Please be advised that all rates are not guaranteed unless the reservation is confirmed."</p>
+        <p>"The lead guest should be present and provide Government issued photo ID upon check in."</p>
+        <p>"Please be advised all special requests are subject to availability not guarantee until you check in."</p>
+        <p>"Please be advised that all rates are not guarantee unless the reservation is confirmed."</p>
         <p>"You may cancel the reservation and make a new one, but after it has been confirmed, it cannot be modified. The amount of the refund will depend on the cancellation policy we previously agreed on."</p>
       </div>
     `;
 
     const carPage = `
-      <h2>Mandatory Disclosures</h2>
+      <h2>Mandatory Disclosure</h2>
+      <div class="submission-note">For submission: Read the disclosure.</div>
       <div class="disclosure-box">
-        <p>"In addition, the driver's age should be 25 or above. However, an additional fee may apply if the driver is below 25 years of age."</p>
+        <p>"In addition, the driver's age should be 25 or above. However, additional fee may be applied if below 25 years of age."</p>
         <p>"Once the reservation has been confirmed, it cannot be changed. You may cancel the booking and book a new one. The amount of the refund will depend on the cancellation policy we previously discussed."</p>
-        <p>"Please keep in mind that you will receive a confirmation email within 12 hours if your booking was accepted or rejected, and changing dates or vehicles is not possible. If you need to upgrade your vehicle, you must contact the car rental company directly."</p>
-        <p>"A major credit card should be in the name of the driver, with enough funds to cover the deposit and fees."</p>
-        <p>"A valid driver's license in the name of the person who will be driving is required."</p>
-        <p>"Insurance proof approved by the agency is required, or you may purchase insurance directly from the agency. Do not purchase or add insurance for bookings made over the phone."</p>
+        <p>"Please keep in mind that you will receive a confirmation email within 12 hours if your booking was accepted or rejected, and that changing dates or vehicles is not possible; if you need to upgrade your vehicle, you must contact the car rental company directly."</p>
+        <p>"Major Credit cards should be in the name of the driver with enough funds to cover deposit and fees is required."</p>
+        <p>"Valid Driver's License in the name of the person who will be driving is required."</p>
+        <p>"Insurance proof approved by agency or Purchase insurance directly from the agency. Do not purchase or add insurance for Book over the Phone"</p>
       </div>
     `;
 
@@ -262,13 +237,13 @@
 <p>Before finalizing your payment, we'd like to make you aware of our policy. Once your ticket is confirmed and issued, we kindly ask that you wait at least 48 hours before making any changes. This policy is in place to ensure a seamless travel experience.</p>
 <p>If you find a need for changes within that time frame, we recommend exploring the option of canceling your booking and rebooking to provide you with greater flexibility.</p>`,
       `<h2>5. Confirmation and Closing</h2>
-<p>-We have successfully processed your reservation. You will be receiving a confirmation email, usually sent in real-time, but if there's a delay, that could take up to 24 to 48 hours.</p>
-<p>-The booking ID is included in that email, or would you like to write it down?</p>
+<p>-We have successfully processed your reservation. You will be receiving an confirmation email, usually that is sent in real-time. but if there's a delay, that could take up to 24 to 48 hours.</p>
+<p>-The booking ID is included in that email. or would you like to write it down?</p>
 <p>-Before I let you go, is there anything else I can help you with?</p>
-<p>If none--Dont forget if you have other concern, we are open 24/7; you can always call us back.</p>
-<p>Survey--shortly after this call, you would receive an email regarding the service that you had receive from me today.</p>
-<p>-i hope you find time to provide us feedback on how i assisted you. Thank you for calling travel centel. Have a wonderful day.</p>
-<p>Close call.</p>`
+<p>If none--Dont forget if you have other concern we are open 24/7 you can always call us back</p>
+<p>Survey--shortly after this call you would receive an email regarding the service that you had receive from me today</p>
+<p>-i hope you find time to provide us feedback on how i assisted you, thank you for calling travel centel have a wonderful day.</p>
+<p>Close call</p>`
     ];
 
     let mode = "home";
